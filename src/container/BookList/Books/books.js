@@ -4,6 +4,7 @@ import Book from "./book";
 import "./bookStyles.css";
 
 const Books = ({ books }) => {
+  // eslint-disable-next-line
   const [_, setLoad] = useState(false);
 
   const onAddToShelf = (book) => {
