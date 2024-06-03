@@ -1,0 +1,47 @@
+.header {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+}
+
+input {
+  height: 40px;
+  width: 40%;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #ccc;
+  font-size: 18px;
+  padding-left: 6px;
+}
+
+input:focus {
+  border: 2px solid #007bff;
+}
+
+.my-books-btn {
+  height: 40px;
+  width: 15%;
+  border-radius: 6px;
+  background-color: rgb(76, 76, 250);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  input {
+    width: 50% !important;
+  }
+  .my-books-btn {
+    margin-left: 0 !important;
+    margin-top: 10px;
+    width: 50% !important;
+  }
+}
