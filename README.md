@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-To setup locally, install npm and node. https://nodejs.org/en/download/package-manager
+To setup locally, Clone this repo, install node(version>=16) and npm(version>=6). https://nodejs.org/en/download/package-manager
 
 ### `npm install`
 Install all the packages
