@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Books from "./Books/books";
-import Header from "./Header";
+import Header from "./Header/header";
+import { CircularProgress } from "@mui/material";
 
 const BooksList = () => {
   const [search, setSearch] = useState("YOUR_QUERY");
@@ -34,14 +35,21 @@ const BooksList = () => {
   };
 
   return (
-    <div className="content-wrapper">
+    <>
       <Header searchValue={search} onSearchChange={onSearchChange} />
       {isLoading ? (
-        <div className="loader">Data Loading... 🙇</div>
+        <CircularProgress
+          sx={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
       ) : (
         <Books books={books} />
       )}
-    </div>
+    </>
   );
 };
 
