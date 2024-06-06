@@ -9,7 +9,7 @@ const Book = ({
 }) => {
   const getTitle = (title) => {
     if (title && title.length > 0) {
-      return title.length > 30 ? `${title.substring(0, 30)}...` : title;
+      return title.length > 28 ? `${title.substring(0, 28)}...` : title;
     }
   };
 
