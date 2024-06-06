@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Book from "./book";
 
-import "./bookStyles.css";
+import { Grid } from "@mui/material";
 
 const Books = ({ books }) => {
-  // eslint-disable-next-line
   const [_, setLoad] = useState(false);
 
   const onAddToShelf = (book) => {
@@ -19,16 +18,18 @@ const Books = ({ books }) => {
   };
 
   return (
-    <div className="book-container">
+    <Grid container spacing={2}>
       {books.map((book) => (
-        <Book
-          key={book.key}
-          book={book}
-          onAddToShelf={onAddToShelf}
-          isBookAddedToShelf={isBookAddedToShelf}
-        />
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Book
+            key={book.key}
+            book={book}
+            onAddToShelf={onAddToShelf}
+            isBookAddedToShelf={isBookAddedToShelf}
+          />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 
