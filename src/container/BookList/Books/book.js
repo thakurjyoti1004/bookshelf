@@ -1,3 +1,4 @@
+import { Box, Button } from "@mui/material";
 import "./bookStyles.css";
 
 const Book = ({
@@ -7,13 +8,9 @@ const Book = ({
   showAddBtn = true,
 }) => {
   const getTitle = (title) => {
-    if (title) {
-      if (title.length >= 40) {
-        return title.substring(0, 40);
-      }
-      return title;
+    if (title && title.length > 0) {
+      return title.length > 30 ? `${title.substring(0, 30)}...` : title;
     }
-    return "Harry Potter";
   };
 
   return (
@@ -23,19 +20,31 @@ const Book = ({
         alt={book.title}
         className="book-cover"
       />
-      <div className="book-details">
-        <h4>{getTitle(book.title)}</h4>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        sx={{ paddingX: 2, paddingY: 3 }}
+      >
+        <h3>{getTitle(book.title) || "Harry Potter"}</h3>
         <p>{book.author_name && book.author_name.join(", ")}</p>
         <p>{book.first_publish_year}</p>
         {showAddBtn &&
           (isBookAddedToShelf(book) ? (
-            <button className="add-btn added-btn">Added to Shelf</button>
+            <Button fullWidth disabled>
+              Added to Shelf
+            </Button>
           ) : (
-            <button className="add-btn" onClick={() => onAddToShelf(book)}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={() => onAddToShelf(book)}
+            >
               Add to Shelf
-            </button>
+            </Button>
           ))}
-      </div>
+      </Box>
     </div>
   );
 };
