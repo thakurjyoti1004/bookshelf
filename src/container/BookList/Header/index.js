@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import "./header.css";
+import { Box, Button, TextField } from "@mui/material";
 
 const Header = ({ search, onSearchChange }) => {
   const navigate = useNavigate();
@@ -9,17 +10,26 @@ const Header = ({ search, onSearchChange }) => {
   };
 
   return (
-    <div className="header">
-      <input
-        value={search}
-        onChange={(e) => onSearchChange(e.target.value)}
+    <Box my={4} display="flex" alignItems="center" sx={{ width: "100%" }}>
+      <TextField
+        id="standard-search"
+        label="Search Books..."
         type="search"
-        placeholder="Search for books"
+        value={search}
+        variant="outlined"
+        sx={{ width: "50%" }}
+        size="small"
+        onChange={(e) => onSearchChange(e.target.value)}
       />
-      <button className="my-books-btn" onClick={goToMyBooks}>
-        My Books
-      </button>
-    </div>
+
+      <Button
+        sx={{ marginLeft: "auto" }}
+        variant="contained"
+        onClick={goToMyBooks}
+      >
+        My Book Shelf
+      </Button>
+    </Box>
   );
 };
 
