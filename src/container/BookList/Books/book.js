@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import "./bookStyles.css";
 
 const Book = ({
@@ -9,7 +9,7 @@ const Book = ({
 }) => {
   const getTitle = (title) => {
     if (title && title.length > 0) {
-      return title.length > 28 ? `${title.substring(0, 28)}...` : title;
+      return title.length > 30 ? `${title.substring(0, 30)}...` : title;
     }
   };
 
@@ -27,9 +27,13 @@ const Book = ({
         alignItems={"center"}
         sx={{ paddingX: 2, paddingY: 3 }}
       >
-        <h3>{getTitle(book.title) || "Harry Potter"}</h3>
-        <p>{book.author_name && book.author_name.join(", ")}</p>
-        <p>{book.first_publish_year}</p>
+        <Typography sx={{ fontWeight: "bold", whiteSpace: "nowrap" }}>
+          {getTitle(book.title) || "Harry Potter"}
+        </Typography>
+        <Typography sx={{ marginTop: 1 }}>
+          {book.author_name && book.author_name.join(", ")}
+        </Typography>
+        <Typography sx={{ marginTop: 0 }}>{book.first_publish_year}</Typography>
         {showAddBtn &&
           (isBookAddedToShelf(book) ? (
             <Button fullWidth disabled>
@@ -40,6 +44,7 @@ const Book = ({
               fullWidth
               variant="contained"
               onClick={() => onAddToShelf(book)}
+              sx={{ marginTop: 2 }}
             >
               Add to Shelf
             </Button>
